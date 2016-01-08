@@ -1,5 +1,7 @@
 require_relative 'methods'
 
+#fogjaoifjgirojgaeirjgeajgoaei
+
 @stop_play = false
 
 
