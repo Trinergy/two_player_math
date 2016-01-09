@@ -1,31 +1,33 @@
+require_relative 'player'
 require_relative 'methods'
 
-#fogjaoifjgirojgaeirjgeajgoaei
-
-@stop_play = false
 
 
-#setting up
+
 intro
 
-get_names
+#get player names
+puts "Player 1's name: "
+p1_name = gets.chomp
+@player_1 = Player.new(p1_name)
 
-#start the game
-until @stop_play
+puts "Player 2's name: "
+p2_name = gets.chomp
+@player_2 = Player.new(p2_name)
+
+#start game
+until game_over?
   math_question
-  get_p1_answer
-  get_p2_answer
-  calculate_stats
+  get_answer(@player_1)
+  get_answer(@player_2)
+  update_stats(@player_1)
+  update_stats(@player_2)
+  #show scoreboard
   announce
   if game_over?
-    @stop_play = true unless play_again?
+    play_again?
   end
+  check_winner
 end
-
-check_winner
-
-
-
-
 
 
