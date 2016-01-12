@@ -1,7 +1,12 @@
 class Player
+  class NameNotValid < StandardError
+  end
   attr_accessor :name, :life, :score, :answer, :correct
 
   def initialize(name)
+    if name == ""
+      raise NameNotValid
+    end
     @name = name
     @life = 3
     @score = 0

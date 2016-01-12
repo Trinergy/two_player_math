@@ -6,14 +6,46 @@ require_relative 'methods'
 
 intro
 
-#get player names
-puts "Player 1's name: "
-p1_name = gets.chomp
-@player_1 = Player.new(p1_name)
+# #get player names
+# puts "Player 1's name: ".light_cyan
+# p1_name = gets.chomp
+# @player_1 = Player.new(p1_name)
 
-puts "Player 2's name: "
-p2_name = gets.chomp
-@player_2 = Player.new(p2_name)
+# puts "Player 2's name: ".light_magenta
+# p2_name = gets.chomp
+# @player_2 = Player.new(p2_name)
+
+names_okay = false
+
+until names_okay
+  begin
+    @player_1 = Player.new(get_name("player_1"))
+    puts "You can read!"
+    names_okay = true
+  rescue Player::NameNotValid => e
+    puts "Do you even read, bro?"
+    puts e.message
+  end
+end
+
+names_okay = false
+
+until names_okay
+  begin
+    @player_2 = Player.new(get_name("player_2"))
+    puts "You can read!"
+    names_okay = true
+  rescue Player::NameNotValid => e
+    puts "Do you even read, bro?"
+    puts e.message
+  end
+end
+
+# @player_2 = Player.new(get_name("player_2"))
+
+
+
+
 
 #start game
 until game_over?
