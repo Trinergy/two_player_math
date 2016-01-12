@@ -1,7 +1,14 @@
 class Player
+  class InvalidNameError < StandardError
+  end
+  class InvalidGuessError < StandardError
+  end
   attr_accessor :name, :life, :score, :answer, :correct
 
   def initialize(name)
+    if name == ""
+      raise InvalidNameError
+    end
     @name = name
     @life = 3
     @score = 0
